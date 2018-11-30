@@ -6,19 +6,45 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Test	KEYWORD1
+Robot		KEYWORD1
+RobotState	KEYWORD1
+Joystick	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-doSomething	KEYWORD2
+	KEYWORD2 update
+	KEYWORD2 ready
+	KEYWORD2 start
+	KEYWORD2 stop
+	KEYWORD2 intitJoystick
+	KEYWORD2 initMotorRight
+	KEYWORD2 initMotorLeft
+	KEYWORD2 drive
+	KEYWORD2 driveStopped
+	KEYWORD2 motorRightStopped
+	KEYWORD2 motorLeftStopped
+	
+	KEYWORD2 getX
+	KEYWORD2 getY
 
 #######################################
 # Instances (KEYWORD2)
 #######################################
 
+	KEYWORD2 state
+	KEYWORD2 joystick
+
 #######################################
 # Constants (LITERAL1)
 #######################################
-
+	
+	LITERAL1 INIT_ROBOT
+	LITERAL1 INIT_IDLE
+	LITERAL1 LOOP_IDLE
+	LITERAL1 INIT_AUTONOMOUS
+	LITERAL1 LOOP_AUTONOMOUS
+	LITERAL1 INIT_TELEOP
+	LITERAL1 LOOP_TELEOP
+	LITERAL1 DISABLED
