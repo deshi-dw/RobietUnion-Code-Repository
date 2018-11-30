@@ -34,6 +34,11 @@ class Robot {
      **/
     void stop();
 
+    /**
+     * Initialize the joystick by giving it two pins. (x and y)
+     **/
+    void initJoystick(int _pinX, int _pinY);
+
      /**
      * Initialize the right motor by giving it two pins. (in1 and in2)
      **/
@@ -68,6 +73,7 @@ class Robot {
      * The state of the robot. There are not going to be many time you want to change this dynamically so it might become private later on.
      **/
     RobotState state = DISABLED;
+    Joystick joystick;
 
   private:
 

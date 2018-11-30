@@ -1,12 +1,12 @@
 /*
-  Robot.h - Robot library - A specialized library made by Soviet Robotics to help in their goal of world domination.
+  Robot.cpp - Robot library - A specialized library made by Soviet Robotics to help in their goal of world domination.
   Copyright (c) 2018 Soviet Robotics.  All right reserved.
 */
 
 // include this library's description file as well as Arduino so we can set port modes.
 #include "Robot.h"
-
-#include <Arduino.h>;
+#include <Joystick.h>
+#include <Arduino.h>
 
 Robot::Robot() {
   // When initializing, the robot will set it's state to 'INIT_ROBOT'.
@@ -85,6 +85,10 @@ void Robot::initTeleop() {
 
 void Robot::loopTeleop() {
 
+}
+
+void Robot::initJoystick(int _pinX, int _pinY) {
+  joystick = new Joystick(_pinX, _pinY);
 }
 
 void Robot::initMotorRight(int _pin1, int _pin2, int _pinEn) {

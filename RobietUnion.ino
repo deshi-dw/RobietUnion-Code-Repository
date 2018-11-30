@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <Robot.h>
+#include <Joystick.h>
 #include <RobotState.h>
 
 // Define the ports we are using. Normally it isn't great practice to define values as this is technically a macro.
@@ -16,9 +17,13 @@
 Robot bot = Robot();
 
 void setup() {
-  // Set up the right and left motors on our bot. After this we call ready meaning the bot is in idle.
+  // Set up the right and left motors on our bot.
   bot.initMotorRight(PMR1, PMR2);
   bot.initMotorLeft(PML1, PML2);
+  // Set up the joystick that controls our bot.
+  bot.initMotorLeft(PML1, PML2);
+  
+  // After this we call 'ready' meaning the bot is in idle.
   bot.ready();
 }
 
