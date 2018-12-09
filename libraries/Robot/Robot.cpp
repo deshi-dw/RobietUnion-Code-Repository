@@ -84,7 +84,7 @@ void Robot::initTeleop() {
 }
 
 void Robot::loopTeleop() {
-
+  
 }
 
 void Robot::initJoystick(int _pinX, int _pinY) {

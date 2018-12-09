@@ -8,8 +8,8 @@
             "includePath": [
                 "${workspaceRoot}/**",
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17134.0/**",
-                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.12.25827/include/**",
-                "D:/apps/Arduino/arduino-1.8.7/hardware/tools/**",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include/**",
+                "D:/apps/Arduino/arduino-1.8.7/hardware/tools/avr/**",
                 "D:/apps/Arduino/arduino-1.8.7/hardware/arduino/avr/**",
                 "D:/apps/Arduino/arduino-1.8.7/libraries/**"
             ],

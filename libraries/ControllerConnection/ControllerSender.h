@@ -7,15 +7,13 @@
 #ifndef ControllerSender_h
 #define ControllerSender_h
 
+#include <SoftwareSerial.h>
+
 class ControllerSender {
     public:
+        SoftwareSerial *bluetoothSerial;
         ControllerSender(int _pinRx, int _pinTx);
-        int setX();
-        int setY();
-
-    private:
-        int pinRx;
-        int pinTx;
+        void Set(uint8_t x, uint8_t y, uint8_t down);
 };
 
 #endif

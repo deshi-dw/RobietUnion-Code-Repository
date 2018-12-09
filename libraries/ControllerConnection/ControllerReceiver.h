@@ -7,15 +7,21 @@
 #ifndef ControllerReceiver_h
 #define ControllerReceiver_h
 
+#include <SoftwareSerial.h>
+#include <string.h>
+
 class ControllerReceiver {
     public:
+        SoftwareSerial *bluetoothSerial;
         ControllerReceiver(int _pinRx, int _pinTx);
-        int getX();
-        int getY();
+        void Update();
+        
+        int x;
+        int y;
+        int down;
 
     private:
-        int pinRx;
-        int pinTx;
+        String input;
 };
 
 #endif
