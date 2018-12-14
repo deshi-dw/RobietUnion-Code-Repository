@@ -32,8 +32,24 @@ This is for if you want to control the robot like a tank. ```right``` and ```lef
 ```cpp
 bot.Stop();
 ```
-This just stops the robot from moving.
+This just stops the robot from moving. This is different from writing ```bot.Drive(0, 0)``` or ```bot.DriveTank(0, 0)``` because it instead never sends anything to the motors.
 
 &nbsp;
 
 The robot can be adjusted by various variables defined within the Robot class.
+
+#### Drive Speed
+```cpp
+bot.speedBais = value;
+```
+This will adjust how much the ```y``` in ```bot.Drive(int x, int y)``` will be used over the ```x```.
+
+&nbsp;
+
+#### Rotation Speed
+```cpp
+bot.rotationBias = value;
+```
+This will adjust how much the ```x``` in ```bot.Drive(int x, int y)``` will be used over the ```y```.
+
+&nbsp;
