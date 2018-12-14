@@ -53,3 +53,45 @@ bot.rotationBias = value;
 This will adjust how much the ```x``` in ```bot.Drive(int x, int y)``` will be used over the ```y```.
 
 &nbsp;
+
+### State Overview
+
+There are 3 different states the robot can be in.
+&nbsp;
+
+#### Idle
+```cpp
+void Idle();
+```
+Runs continually before the robot can move. This state acts as time outside of the compitiion.
+
+&nbsp;
+
+#### Autonomous
+```cpp
+void Autonomous();
+```
+Runs throughout the autonomous part of the compitition. In this stage, controlling the robot is not allowed.
+
+&nbsp;
+
+#### Teleop
+```cpp
+void Teleop();
+```
+Runs after atonomous. The bot is now allowed to be controlled by a human.
+
+&nbsp;
+
+Each state has 2 stages:
+&nbsp;
+
+#### Init
+```Init```
+Runs once at the start of the state.
+
+#### Loop
+```Loop```
+Runs repeatedly until the state changes.
+
+&nbsp;
