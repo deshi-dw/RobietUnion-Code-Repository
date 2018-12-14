@@ -8,21 +8,38 @@
 #include <Arduino.h>
 
 #include <Motor.h>
+#include <MathExtra.h>
 
 Robot::Robot() {
+
   // When initializing, the robot will set it's state to 'INIT_ROBOT'.
   // When it is in this state, the robot will not be to move or do anything else.
   state = INIT_ROBOT;
+}
+
+void Robot::Ready() {
+  state = INIT_IDLE;
 }
 
 void Robot::Update() {
 
 }
 
+void Robot::Drive(int x, int y) {
+  int newX = (int)(x * rotationBias);
+  int newY = (int)(x * speedBias);
+  DriveTank(MathExtra::Clamp(newY + newX, 255, -255), MathExtra::Clamp(newY - newX, -255, 255));
+}
+
+void Robot::DriveTank(int right, int left) {
+motorRight.SetSpeed(right);
+motorLeft.SetSpeed(left);
+}
+
 void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {
-  motorRight = new Motor(_pin1, _pin2);
+  motorRight = Motor(_pin1, _pin2, _pinE);
 }
 
 void Robot::AttachMotorLeft(int _pin1, int _pin2, int _pinE) {
-  motorLeft = new Motor(_pin1, _pin2);
+  motorLeft = Motor(_pin1, _pin2, _pinE);
 }

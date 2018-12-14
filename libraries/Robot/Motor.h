@@ -9,6 +9,7 @@
 
 class Motor {
     public:
+        Motor();
         Motor(int _pin1, int _pin2, int _pinE);
         void SetSpeed(int speed);
         void Stop();

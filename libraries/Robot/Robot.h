@@ -1,5 +1,5 @@
 /*
-  Robot.h - Robot library - A specialized library made by Soviet Robotics to help in their goal of world domination.
+  // Robot.h - Robot library - A specialized library made by Soviet Robotics to help in their goal of world domination.
   Copyright (c) 2018 Soviet Robotics.  All right reserved.
 */
 
@@ -15,12 +15,21 @@ class Robot {
   public:
     Robot();
     void Update();
+    void Ready();
+
+    void Drive(int x, int y);
+    void DriveTank(int right, int left);
+    void Stop();
+
     void AttachMotorRight(int _pin1, int _pin2, int _pinE);
     void AttachMotorLeft(int _pin1, int _pin2, int _pinE);
 
     Motor motorRight;
     Motor motorLeft;
     RobotState state;
+
+    float rotationBias = 1.0f;
+    float speedBias = 1.0f;
 };
 
 #endif
