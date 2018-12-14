@@ -6,14 +6,25 @@
                 "ARDUINO=10800"
             ],
             "includePath": [
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/tools/**",
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr**",
                 "${workspaceRoot}/**",
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17134.0/**",
+<<<<<<< HEAD
                 "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include/**",
                 "D:/apps/Arduino/arduino-1.8.7/hardware/tools/avr/**",
                 "D:/apps/Arduino/arduino-1.8.7/hardware/arduino/avr/**",
                 "D:/apps/Arduino/arduino-1.8.7/libraries/**"
+=======
+                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.12.25827/include/**",
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/tools/**",
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr/**",
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/libraries/**"
             ],
-            "forcedInclude": [],
+            "forcedInclude": [
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+>>>>>>> 86fed6d1be38c4b8c42f65289c60100664b8b947
+            ],
             "intelliSenseMode": "clang-x64",
             "cStandard": "c11",
             "cppStandard": "c++17"

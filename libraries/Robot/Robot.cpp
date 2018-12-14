@@ -5,8 +5,9 @@
 
 // include this library's description file as well as Arduino so we can set port modes.
 #include "Robot.h"
-#include <Joystick.h>
 #include <Arduino.h>
+
+#include <Motor.h>
 
 Robot::Robot() {
   // When initializing, the robot will set it's state to 'INIT_ROBOT'.
@@ -14,6 +15,7 @@ Robot::Robot() {
   state = INIT_ROBOT;
 }
 
+<<<<<<< HEAD
 void Robot::update() {
   // This switch statement acts as a state machine. Depending on what state the robot is in will determine what it can do.
   switch (state) {
@@ -114,16 +116,16 @@ void Robot::initMotorLeft(int _pin1, int _pin2, int _pinEn) {
 void Robot::drive(int x, int y) {
 
 }
+=======
+void Robot::Update() {
+>>>>>>> 86fed6d1be38c4b8c42f65289c60100664b8b947
 
-void Robot::driveStopped(bool value) {
-  digitalWrite(motorRightEnabled, value);
-  digitalWrite(motorLeftEnabled, value);
 }
 
-void Robot::motorRightStopped(bool value) {
-  digitalWrite(motorRightEnabled, value);
+void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {
+  motorRight = new Motor(_pin1, _pin2);
 }
 
-void Robot::motorLeftStopped(bool value) {
-  digitalWrite(motorLeftEnabled, value);
+void Robot::AttachMotorLeft(int _pin1, int _pin2, int _pinE) {
+  motorLeft = new Motor(_pin1, _pin2);
 }
