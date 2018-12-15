@@ -10,122 +10,49 @@
 #include <Motor.h>
 
 Robot::Robot() {
+
   // When initializing, the robot will set it's state to 'INIT_ROBOT'.
   // When it is in this state, the robot will not be to move or do anything else.
   state = INIT_ROBOT;
 }
 
-<<<<<<< HEAD
-void Robot::update() {
-  // This switch statement acts as a state machine. Depending on what state the robot is in will determine what it can do.
-  switch (state) {
-    case INIT_ROBOT:
-      break;
-    case INIT_IDLE:
-      initIdle();
-      break;
-    case LOOP_IDLE:
-      loopIdle();
-      break;
-    case INIT_AUTONOMOUS:
-      initAutonomous();
-      break;
-    case LOOP_AUTONOMOUS:
-      loopAutonomous();
-      break;
-    case INIT_TELEOP:
-      initTeleop();
-      break;
-    case LOOP_TELEOP:
-      loopTeleop();
-      break;
-    case DISABLED:
-      //TODO: Add shutdown functionality.
-      break;
-    default:
-      //TODO: Add shutdown functionality.
-      break;
-  }
-}
-
-void Robot::ready() {
-  driveStop();
+void Robot::Ready() {
   state = INIT_IDLE;
 }
 
-void Robot::start() {
-
-  state = INIT_AUTONOMOUS;
-}
-
-void Robot::stop() {
-
-}
-
-void Robot::initIdle() {
-
-  state = LOOP_IDLE;
-}
-
-void Robot::loopIdle() {
-
-}
-
-void Robot::initAutonomous() {
-
-  state = LOOP_AUTONOMOUS;
-}
-
-void Robot::loopAutonomous() {
-
-}
-
-void Robot::initTeleop() {
-
-  state = LOOP_TELEOP;
-}
-
-void Robot::loopTeleop() {
-  
-}
-
-void Robot::initJoystick(int _pinX, int _pinY) {
-  joystick = new Joystick(_pinX, _pinY);
-}
-
-void Robot::initMotorRight(int _pin1, int _pin2, int _pinEn) {
-  motorRight1 = _pin1;
-  motorRight2 = _pin2;
-  motorRightEnabled = _pinEn;
-
-  pinMode(motorRight1, OUTPUT);
-  pinMode(motorRight2, OUTPUT);
-  pinMode(motorRightEnabled, OUTPUT);
-}
-
-void Robot::initMotorLeft(int _pin1, int _pin2, int _pinEn) {
-  motorLeft1 = _pin1;
-  motorLeft2 = _pin2;
-  motorLeftEnabled = _pinEn;
-
-  pinMode(motorLeft1, OUTPUT);
-  pinMode(motorLeft2, OUTPUT);
-  pinMode(motorLeftEnabled, OUTPUT);
-}
-
-void Robot::drive(int x, int y) {
-
-}
-=======
 void Robot::Update() {
->>>>>>> 86fed6d1be38c4b8c42f65289c60100664b8b947
+  time = millis() - timeDifference;
 
+  if(!stopped) {
+    motorRight.SetSpeed(speedRight);
+    motorLeft.SetSpeed(speedLeft);
+  }
+
+  if(state == INIT_AUTONOMOUS || state == INIT_TELEOP) timeDifference = time;
+
+  if(state == LOOP_AUTONOMOUS && time > autonomousTime) state = INIT_TELEOP;
+  if(state == LOOP_TELEOP && time > teleopTime) state = DISABLED;
+}
+
+void Robot::Drive(int x, int y) {
+  if(stopped) stopped = false;
+
+  int newX = (int)(x * rotationBias);
+  int newY = (int)(x * speedBias);
+  DriveTank(newY + newX, newY - newX);
+}
+
+void Robot::DriveTank(int right, int left) {
+  if(stopped) stopped = false;
+
+  speedRight = right;
+  speedLeft = left;
 }
 
 void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {
-  motorRight = new Motor(_pin1, _pin2);
+  motorRight = Motor(_pin1, _pin2, _pinE);
 }
 
 void Robot::AttachMotorLeft(int _pin1, int _pin2, int _pinE) {
-  motorLeft = new Motor(_pin1, _pin2);
+  motorLeft = Motor(_pin1, _pin2, _pinE);
 }
