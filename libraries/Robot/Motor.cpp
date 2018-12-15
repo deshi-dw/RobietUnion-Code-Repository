@@ -6,6 +6,7 @@
 // include this library's description file as well as Arduino so we can set port modes.
 #include "Motor.h"
 #include <Arduino.h>
+#include <MathExtra.h>
 
 Motor::Motor(int _pin1, int _pin2, int _pinE) {
   pinMode(_pin1, OUTPUT);

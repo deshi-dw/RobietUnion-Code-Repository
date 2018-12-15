@@ -8,7 +8,6 @@
 #include <Arduino.h>
 
 #include <Motor.h>
-#include <MathExtra.h>
 
 Robot::Robot() {
 
@@ -22,18 +21,32 @@ void Robot::Ready() {
 }
 
 void Robot::Update() {
+  time = millis() - timeDifference;
 
+  if(!stopped) {
+    motorRight.SetSpeed(speedRight);
+    motorLeft.SetSpeed(speedLeft);
+  }
+
+  if(state == INIT_AUTONOMOUS || state == INIT_TELEOP) timeDifference = time;
+
+  if(state == LOOP_AUTONOMOUS && time > autonomousTime) state = INIT_TELEOP;
+  if(state == LOOP_TELEOP && time > teleopTime) state = DISABLED;
 }
 
 void Robot::Drive(int x, int y) {
+  if(stopped) stopped = false;
+
   int newX = (int)(x * rotationBias);
   int newY = (int)(x * speedBias);
-  DriveTank(MathExtra::Clamp(newY + newX, 255, -255), MathExtra::Clamp(newY - newX, -255, 255));
+  DriveTank(newY + newX, newY - newX);
 }
 
 void Robot::DriveTank(int right, int left) {
-motorRight.SetSpeed(right);
-motorLeft.SetSpeed(left);
+  if(stopped) stopped = false;
+
+  speedRight = right;
+  speedLeft = left;
 }
 
 void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {

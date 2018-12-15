@@ -19,37 +19,36 @@ Robot bot = Robot();
 
 void setup() {
   // Set up the right and left motors on our bot.
-  bot.initMotorRight(PMR1, PMR2, PMRE);
-  bot.initMotorLeft(PML1, PML2, PMLE);
+  bot.AttachMotorRight(PMR1, PMR2, PMRE);
+  bot.AttachMotorLeft(PML1, PML2, PMLE);
 
   // After this we call 'ready' meaning the bot is in idle.
-  bot.ready();
+  bot.Ready();
 }
 
 void loop() {
-  bot.update();
-
+  // This is a basic state machine. It will run specific code for each state in the switch loop.
   switch(bot.state) {
     case INIT_ROBOT:
-      bot.start = INIT_IDLE;
+      bot.state = INIT_IDLE;
       break;
     case INIT_IDLE:
       initIdle();
-      bot.start = LOOP_IDLE;
+      bot.state = LOOP_IDLE;
       break;
     case LOOP_IDLE:
       loopIdle();
       break;
     case INIT_AUTONOMOUS:
       initAutonomous();
-      bot.start = LOOP_AUTONOMOUS;
+      bot.state = LOOP_AUTONOMOUS;
       break;
     case LOOP_AUTONOMOUS:
       loopAutonomous();
       break;
     case INIT_TELEOP:
       initTeleop();
-      bot.start = LOOP_TELEOP;
+      bot.state = LOOP_TELEOP;
       break;
     case LOOP_TELEOP:
       loopTeleop();
@@ -61,6 +60,9 @@ void loop() {
       //TODO: Add shutdown functionality.
       break;
   }
+
+  // Update the robot with all the new data.
+  bot.Update();
 }
 
 void initIdle() {
@@ -69,6 +71,7 @@ void initIdle() {
 
 void loopIdle() {
 
+  bot.state = INIT_AUTONOMOUS;
 }
 
 void initAutonomous() {
@@ -77,6 +80,7 @@ void initAutonomous() {
 
 void loopAutonomous() {
 
+  bot.state = INIT_TELEOP;
 }
 
 void initTeleop() {
@@ -84,5 +88,5 @@ void initTeleop() {
 }
 
 void loopTeleop() {
-
+  bot.Drive(0, 200);
 }

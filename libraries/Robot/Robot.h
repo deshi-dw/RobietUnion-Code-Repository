@@ -30,6 +30,18 @@ class Robot {
 
     float rotationBias = 1.0f;
     float speedBias = 1.0f;
+
+    unsigned long time;
+
+    unsigned long autonomousTime;
+    unsigned long teleopTime;
+
+  private:
+    int speedRight = 0;
+    int speedLeft = 0;
+    bool stopped = false;
+    
+    unsigned long timeDifference;
 };
 
 #endif
