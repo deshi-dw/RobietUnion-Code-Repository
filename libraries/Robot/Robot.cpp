@@ -43,9 +43,9 @@ void Robot::Update() {
 void Robot::Drive(int x, int y) {
   if(stopped) stopped = false;
 
-  int newX = (int)(x * rotationBias);
-  int newY = (int)(x * speedBias);
-  DriveTank(newY + newX, newY - newX);
+  newX = x/255 * rotationBias;
+  newY = (int)x * speedBias;
+  DriveTank(newY * -newX, newY * newX);
 }
 
 void Robot::DriveTank(int right, int left) {

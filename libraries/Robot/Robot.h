@@ -47,6 +47,9 @@ class Robot {
     bool stopped = false;
 
     unsigned long timeDifference;
+
+    float newX = 0;
+    int newY = 0;
 };
 
 #endif

@@ -15,13 +15,15 @@ class ControllerReceiver {
         SoftwareSerial *bluetoothSerial;
         ControllerReceiver(int _pinRx, int _pinTx);
         void Update();
-        
+
         int x;
         int y;
         int down;
 
     private:
         String input;
+        int startIndex = 0;
+        int endIndex = 0;
 };
 
 #endif

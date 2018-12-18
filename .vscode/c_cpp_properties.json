@@ -3,7 +3,12 @@
         {
             "name": "Win32",
             "defines": [
-                "ARDUINO=10800"
+                "ARDUINO=10800",
+                "F_CPU=16000000L",
+                "ARDUINO=10805",
+                "ARDUINO_AVR_UNO",
+                "ARDUINO_ARCH_AVR",
+                "USBCON"
             ],
             "includePath": [
                 "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/tools/**",

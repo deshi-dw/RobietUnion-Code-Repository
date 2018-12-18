@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <HardwareSerial.h>
 
 #include <Robot.h>
 #include <RobotState.h>
@@ -64,10 +65,12 @@ void loop() {
     case DISABLED:
       Serial.println("Bot is disabled.");
       bot.isDisabled = true;
+      Serial.end();
       break;
     default:
       Serial.println("ERROR. Robot is stateless. Shutting down robot...");
       bot.isDisabled = true;
+      Serial.end();
       break;
   }
 

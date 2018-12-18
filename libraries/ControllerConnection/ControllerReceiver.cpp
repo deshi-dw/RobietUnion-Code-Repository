@@ -24,8 +24,8 @@ void ControllerReceiver::Update() {
 
   input = input.substring(input.indexOf('<')).substring(input.indexOf('>')); // Input should look like this: "<x,y,down>" If it doesn't, this will make sure it does.
 
-  int startIndex = 0; // Set the start index. This should be the last comma or, like here at the start, 0.
-  int endIndex = input.indexOf(','); // Set the end of the value to the next comma.
+  startIndex = 0; // Set the start index. This should be the last comma or, like here at the start, 0.
+  endIndex = input.indexOf(','); // Set the end of the value to the next comma.
   x = input.substring(startIndex, endIndex).toInt(); // Set the x to what is between 0 and the first comma. Repeat.
 
   startIndex = endIndex;
