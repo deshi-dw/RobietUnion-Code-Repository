@@ -11,19 +11,24 @@
 #define PMRE 11
 
 #define PML1 10
-#define PML2 9
-#define PMLE 8
+#define PML2 8
+#define PMLE 9
 
 // Create our Robot named 'bot'.
 Robot bot = Robot();
 
 void setup() {
+  Serial.begin(9600);
+
   // Set up the right and left motors on our bot.
   bot.AttachMotorRight(PMR1, PMR2, PMRE);
   bot.AttachMotorLeft(PML1, PML2, PMLE);
 
+  // Set up bluetooth connection.
+
   // After this we call 'ready' meaning the bot is in idle.
   bot.Ready();
+  bot.state = DEBUG;
 }
 
 void loop() {
@@ -53,11 +58,16 @@ void loop() {
     case LOOP_TELEOP:
       loopTeleop();
       break;
+    case DEBUG:
+      debug();
+      bot.isDisabled = true;
     case DISABLED:
-      //TODO: Add shutdown functionality.
+      Serial.println("Bot is disabled.");
+      bot.isDisabled = true;
       break;
     default:
-      //TODO: Add shutdown functionality.
+      Serial.println("ERROR. Robot is stateless. Shutting down robot...");
+      bot.isDisabled = true;
       break;
   }
 
@@ -66,27 +76,76 @@ void loop() {
 }
 
 void initIdle() {
-
+  Serial.println("Init Idle");
 }
 
 void loopIdle() {
+  Serial.println("Init Loop Idle");
 
   bot.state = INIT_AUTONOMOUS;
 }
 
 void initAutonomous() {
+  Serial.println("Init Autonomous");
 
 }
 
 void loopAutonomous() {
-
-  bot.state = INIT_TELEOP;
+  Serial.println("Loop Autonomous");
 }
 
 void initTeleop() {
+  Serial.println("Init Teleop");
 
 }
 
 void loopTeleop() {
-  bot.Drive(0, 200);
+  Serial.println("Loop Teleop");
+}
+
+void debug() {
+  // Right Forwards //
+  Serial.println("Right forward");
+  bot.DriveTank(255, 0);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("Left forward");
+  // Left Forwards //
+  bot.DriveTank(0, 255);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("Right Backwards");
+  // Right Backwards //
+  bot.DriveTank(-255, 0);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("Right Backwards");
+  // Left Backwards //
+  bot.DriveTank(0, -255);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("Both forward");
+  // Both Forwards //
+  bot.DriveTank(255, 255);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("Both Backwards");
+  // Both Backwards //
+  bot.DriveTank(-255, -255);
+  bot.Pause(1000);
+  bot.DriveTank(0, 0);
+  bot.Pause(500);
+
+  Serial.println("");
+  Serial.println("Debug ended. Disabling robot...");
 }

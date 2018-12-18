@@ -8,16 +8,19 @@
 #include <Arduino.h>
 #include <MathExtra.h>
 
+Motor::Motor() { }
+
 Motor::Motor(int _pin1, int _pin2, int _pinE) {
   pinMode(_pin1, OUTPUT);
   pinMode(_pin2, OUTPUT);
   pinMode(_pinE, OUTPUT);
+  pin1 = _pin1;
+  pin2 = _pin2;
+  pinE = _pinE;
 }
 
 void Motor::SetSpeed(int speed) {
-  if(speed == 0) return;
-
-  // TODO: If motors are spinning the wrong way, switch the 1 and 0.
+   // TODO: If motors are spinning the wrong way, switch the 1 and 0.
   if(speed > 0) {
     digitalWrite(pin1, 1);
     digitalWrite(pin2, 0);
@@ -28,6 +31,6 @@ void Motor::SetSpeed(int speed) {
     digitalWrite(pin1, 0);
     digitalWrite(pin2, 1);
 
-    analogWrite(pinE, speed);
+    analogWrite(pinE, speed*-1);
   }
 }

@@ -1,3 +1,4 @@
+
 /*
   // Robot.h - Robot library - A specialized library made by Soviet Robotics to help in their goal of world domination.
   Copyright (c) 2018 Soviet Robotics.  All right reserved.
@@ -21,6 +22,8 @@ class Robot {
     void DriveTank(int right, int left);
     void Stop();
 
+    void Pause(unsigned long time);
+
     void AttachMotorRight(int _pin1, int _pin2, int _pinE);
     void AttachMotorLeft(int _pin1, int _pin2, int _pinE);
 
@@ -33,14 +36,16 @@ class Robot {
 
     unsigned long time;
 
-    unsigned long autonomousTime;
-    unsigned long teleopTime;
+    const unsigned long autonomousTime = 15000;
+    const unsigned long teleopTime = 45000;
+
+    bool isDisabled = false;
 
   private:
     int speedRight = 0;
     int speedLeft = 0;
     bool stopped = false;
-    
+
     unsigned long timeDifference;
 };
 

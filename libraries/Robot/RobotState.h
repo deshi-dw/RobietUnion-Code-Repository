@@ -15,7 +15,8 @@ enum RobotState {
   LOOP_AUTONOMOUS,
   INIT_TELEOP,
   LOOP_TELEOP,
-  DISABLED
+  DISABLED,
+  DEBUG
 };
 
 #endif

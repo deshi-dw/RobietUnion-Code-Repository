@@ -13,6 +13,6 @@ Joystick::Joystick(int _apinX, int _apinY) {
 }
 
 void Joystick::Update() {
-  x = analogRead(apinX);
-  y = analogRead(apinY);
+  x = map(analogRead(apinX), -1024, 1024, -255, 255);
+  y = map(analogRead(apinY), -1024, 1024, -255, 255);
 }

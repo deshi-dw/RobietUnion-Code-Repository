@@ -10,7 +10,6 @@
 #include <Motor.h>
 
 Robot::Robot() {
-
   // When initializing, the robot will set it's state to 'INIT_ROBOT'.
   // When it is in this state, the robot will not be to move or do anything else.
   state = INIT_ROBOT;
@@ -18,10 +17,16 @@ Robot::Robot() {
 
 void Robot::Ready() {
   state = INIT_IDLE;
+  DriveTank(0, 0);
+  timeDifference = time;
 }
 
 void Robot::Update() {
+  if(isDisabled) return;
+
   time = millis() - timeDifference;
+
+  // TODO: Get bluetooth input via ControllerReciever.
 
   if(!stopped) {
     motorRight.SetSpeed(speedRight);
@@ -32,6 +37,7 @@ void Robot::Update() {
 
   if(state == LOOP_AUTONOMOUS && time > autonomousTime) state = INIT_TELEOP;
   if(state == LOOP_TELEOP && time > teleopTime) state = DISABLED;
+  // if(state == LOOP_TELEOP && time > teleopTime) state = INIT_ROBOT;
 }
 
 void Robot::Drive(int x, int y) {
@@ -47,6 +53,13 @@ void Robot::DriveTank(int right, int left) {
 
   speedRight = right;
   speedLeft = left;
+}
+
+void Robot::Pause(unsigned long pause) {
+  unsigned long pauseTime = time + pause;
+  while(pauseTime > time) {
+    Update();
+  }
 }
 
 void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {
