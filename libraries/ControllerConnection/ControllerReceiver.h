@@ -22,6 +22,7 @@ class ControllerReceiver {
 
     private:
         String input;
+        char add;
         int startIndex = 0;
         int endIndex = 0;
 };

@@ -17,7 +17,7 @@ ControllerReceiver::ControllerReceiver(int _pinRx, int _pinTx) {
 void ControllerReceiver::Update() {
   if(!bluetoothSerial->available) return; // If there is no serial too read we should break out of Update.
 
-  char add = (char)bluetoothSerial->read(); // Read char if there is one.
+  add = (char)bluetoothSerial->read(); // Read char if there is one.
   input += add; // Add the char to input.
 
   if(add != '>') return; // If the char is not a closing tag then we break out of Update.
