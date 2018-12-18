@@ -10,6 +10,7 @@
 
 Motor::Motor() { }
 
+// Create a new motor based on 2 control pins and an enable value.
 Motor::Motor(int _pin1, int _pin2, int _pinE) {
   pinMode(_pin1, OUTPUT);
   pinMode(_pin2, OUTPUT);
@@ -20,7 +21,7 @@ Motor::Motor(int _pin1, int _pin2, int _pinE) {
 }
 
 void Motor::SetSpeed(int speed) {
-   // TODO: If motors are spinning the wrong way, switch the 1 and 0.
+   // TODO: If motors are spinning the wrong way, switch the 1 and 0 in digitalWrite().
   if(speed > 0) {
     digitalWrite(pin1, 1);
     digitalWrite(pin2, 0);

@@ -16,7 +16,7 @@ class Robot {
   public:
     Robot();
     void Update();
-    void Ready();
+    void Ready(RobotState newState);
 
     void Drive(int x, int y);
     void DriveTank(int right, int left);

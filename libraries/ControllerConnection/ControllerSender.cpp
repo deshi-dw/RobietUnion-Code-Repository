@@ -10,8 +10,10 @@
 #include <inttypes.h>;
 
 ControllerSender::ControllerSender(int _pinRx, int _pinTx) {
-  bluetoothSerial = new SoftwareSerial(_pinRx, _pinTx); // Set SoftwareSerial to RX and TX
-  bluetoothSerial->begin(34000); // FIXME: Find correct number.
+  // Set SoftwareSerial to RX and TX
+  bluetoothSerial = new SoftwareSerial(_pinRx, _pinTx);
+  // FIXME: Find correct number.
+  bluetoothSerial->begin(34000);
 }
 
 void ControllerSender::Set(uint8_t x, uint8_t y, uint8_t down) {
