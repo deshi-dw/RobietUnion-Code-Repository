@@ -11,6 +11,7 @@
 // Include type 'RobotState'. This is an enum that holds the robots current state.
 #include "RobotState.h"
 #include <Motor.h>
+#include <ControllerReceiver.h>
 
 class Robot {
   public:
@@ -27,8 +28,12 @@ class Robot {
     void AttachMotorRight(int _pin1, int _pin2, int _pinE);
     void AttachMotorLeft(int _pin1, int _pin2, int _pinE);
 
+    void AttachControllerReciver(int _pinRx, int _pinTx);
+
     Motor motorRight;
     Motor motorLeft;
+    ControllerReceiver controllerReceiver;
+
     RobotState state;
 
     float rotationBias = 1.0f;

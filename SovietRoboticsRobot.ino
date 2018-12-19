@@ -20,14 +20,18 @@
 // ex. PMR1 is P = PORT, M = MOTOR (CONTROL), R1 = Right1 (NAME)
 
 // Define right motor ports
-#define PMR1 13
-#define PMR2 12
-#define PMRE 11
+#define PMR1 10
+#define PMR2 8
+#define PMRE 9
 
 // Define left motor ports
-#define PML1 10
-#define PML2 8
-#define PMLE 9
+#define PML1 13
+#define PML2 12
+#define PMLE 11
+
+// Define bluetooth ports
+#define PBRX 3
+#define PBTX 2
 
 // Create our Robot named 'bot'.
 Robot bot = Robot();
@@ -40,7 +44,8 @@ void setup() {
   bot.AttachMotorRight(PMR1, PMR2, PMRE);
   bot.AttachMotorLeft(PML1, PML2, PMLE);
 
-  // TODO: Set up bluetooth connection.
+  // Set up controller receiver.
+  bot.AttachControllerReciver(PBRX, PBTX);
 
   // Ready the state we want to start in. This would ideally be
   // either an INIT state or a finite-runtime state. (ex. DEBUG or DISABLED)
@@ -136,7 +141,7 @@ void initAutonomous() {
 
 // Run on robot autonomous loop state.
 void loopAutonomous() {
-  Serial.println("Loop Autonomous");
+  // Serial.println("Loop Autonomous");
 }
 
 // Run on robot teleop initiation state.
@@ -147,7 +152,9 @@ void initTeleop() {
 
 // Run on robot teleop loop state.
 void loopTeleop() {
-  Serial.println("Loop Teleop");
+  // Serial.println("Loop Teleop");
+
+  bot.Drive(bot.controllerReceiver.x, bot.controllerReceiver.y);
 }
 
 // Run on robot debug state.
@@ -173,7 +180,7 @@ void debug() {
   bot.DriveTank(0, 0);
   bot.Pause(500);
 
-  Serial.println("Right Backwards");
+  Serial.println("Left Backwards");
   // Left Backwards //
   bot.DriveTank(0, -255);
   bot.Pause(1000);

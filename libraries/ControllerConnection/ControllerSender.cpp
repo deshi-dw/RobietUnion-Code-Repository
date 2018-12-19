@@ -11,7 +11,7 @@
 
 ControllerSender::ControllerSender(int _pinRx, int _pinTx) {
   // Set SoftwareSerial to RX and TX
-  bluetoothSerial = new SoftwareSerial(_pinRx, _pinTx);
+  bluetoothSerial = SoftwareSerial(_pinRx, _pinTx);
   // FIXME: Find correct number.
   bluetoothSerial->begin(34000);
 }

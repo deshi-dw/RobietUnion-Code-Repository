@@ -1,5 +1,5 @@
 {
     "sketch": "RobietUnion.ino",
-    "port": "COM5",
+    "port": "COM6",
     "board": "arduino:avr:uno"
 }

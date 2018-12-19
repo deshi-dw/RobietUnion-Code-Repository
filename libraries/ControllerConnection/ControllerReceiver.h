@@ -12,7 +12,7 @@
 
 class ControllerReceiver {
     public:
-        SoftwareSerial *bluetoothSerial;
+        SoftwareSerial bluetoothSerial;
         ControllerReceiver(int _pinRx, int _pinTx);
         void Update();
 
