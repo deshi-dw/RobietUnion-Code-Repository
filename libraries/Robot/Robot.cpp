@@ -85,8 +85,3 @@ void Robot::AttachMotorRight(int _pin1, int _pin2, int _pinE) {
 void Robot::AttachMotorLeft(int _pin1, int _pin2, int _pinE) {
   motorLeft = Motor(_pin1, _pin2, _pinE);
 }
-
-// Attach a controller receiver to the robot.
-void Robot::AttachControllerReciver(int _pinRx, int _pinTx) {
-  controllerReceiver = ControllerReceiver(_pinRx, _pinTx);
-}

@@ -19,7 +19,8 @@
                 "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7tools/**",
                 "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr/**",
                 "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/libraries/**",
-                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr/variants/circuitplay32u4"
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr/variants/circuitplay32u4",
+                "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/**"
             ],
             "forcedInclude": [
                 "C:/Program Files (x86)/arduino-1.8.7-windows/arduino-1.8.7/hardware/arduino/avr/cores/arduino/Arduino.h"
